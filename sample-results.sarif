@@ -1,0 +1,181 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "EnvDoctor",
+          "version": "0.1.0",
+          "rules": [
+            {
+              "id": "ENV101",
+              "shortDescription": {
+                "text": "Referenced variable is missing from the selected environment file"
+              }
+            },
+            {
+              "id": "ENV102",
+              "shortDescription": {
+                "text": "Referenced variable is missing from the example file"
+              }
+            },
+            {
+              "id": "ENV201",
+              "shortDescription": {
+                "text": "Variable is defined but no supported source-code reference was found"
+              }
+            },
+            {
+              "id": "ENV401",
+              "shortDescription": {
+                "text": "Potential secret detected; value has been redacted"
+              }
+            },
+            {
+              "id": "ENV202",
+              "shortDescription": {
+                "text": "Example variable is not present in the selected environment file"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ENV101",
+          "level": "error",
+          "message": {
+            "text": "MISSING_REQUIRED_KEY: Referenced variable is missing from the selected environment file"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app.py"
+                },
+                "region": {
+                  "startLine": 4
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ENV102",
+          "level": "warning",
+          "message": {
+            "text": "MISSING_REQUIRED_KEY: Referenced variable is missing from the example file"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app.py"
+                },
+                "region": {
+                  "startLine": 4
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ENV101",
+          "level": "error",
+          "message": {
+            "text": "REDIS_URL: Referenced variable is missing from the selected environment file"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "app.py"
+                },
+                "region": {
+                  "startLine": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ENV201",
+          "level": "warning",
+          "message": {
+            "text": "API_KEY: Variable is defined but no supported source-code reference was found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/mnt/data/EnvDoctor/examples/.env"
+                },
+                "region": {
+                  "startLine": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ENV401",
+          "level": "error",
+          "message": {
+            "text": "API_KEY: Potential secret detected; value has been redacted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/mnt/data/EnvDoctor/examples/.env"
+                },
+                "region": {
+                  "startLine": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ENV201",
+          "level": "warning",
+          "message": {
+            "text": "UNUSED_FLAG: Variable is defined but no supported source-code reference was found"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/mnt/data/EnvDoctor/examples/.env"
+                },
+                "region": {
+                  "startLine": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ENV202",
+          "level": "note",
+          "message": {
+            "text": "REDIS_URL: Example variable is not present in the selected environment file"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/mnt/data/EnvDoctor/examples/.env.example"
+                },
+                "region": {
+                  "startLine": 2
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
